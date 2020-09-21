@@ -1,0 +1,1 @@
+A simple game of Pong where players can control paddles to hit the ball. Made using Unity
