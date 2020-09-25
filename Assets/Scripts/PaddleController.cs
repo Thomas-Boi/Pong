@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
-
-    private float bottomBound = -6.0f;
-    private float topBound = 6.0f;
+    private float bottomY = -6.0f;
+    private float topY = 6.0f;
+    private float paddleSpeed = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +18,19 @@ public class PaddleController : MonoBehaviour
     void Update()
     {
 
+        Vector3 clampPos = transform.position;
+        clampPos.y = Mathf.Clamp(clampPos.y, bottomY, topY);
+        transform.position = clampPos;
+
         // Input for left paddle (main player)
         if (Input.GetKey(KeyCode.W))
         {
-            Vector3 paddlePos = new Vector3(0, 0.1f, 0);
+            Vector3 paddlePos = new Vector3(0, paddleSpeed, 0);
             transform.Translate(paddlePos);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Vector3 paddlePos = new Vector3(0, -0.1f, 0);
+            Vector3 paddlePos = new Vector3(0, -paddleSpeed, 0);
             transform.Translate(paddlePos);
         }
 
