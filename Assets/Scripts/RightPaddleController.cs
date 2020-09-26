@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaddleController2 : MonoBehaviour
+public class RightPaddleController : MonoBehaviour
 {
     public static bool secondPlayer = true;
 
-    private float bottomY = -6.0f;
-    private float topY = 6.0f;
+    private float bottomY = -7.7f;
+    private float topY = 12.5f;
     private float paddleSpeed = 0.1f;
 
     // Start is called before the first frame update

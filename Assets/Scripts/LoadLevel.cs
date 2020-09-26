@@ -10,13 +10,13 @@ public class LoadLevel : MonoBehaviour
     {
         //Debug.Log("PvP");
         SceneManager.LoadScene("SampleScene");
-        PaddleController2.secondPlayer = true;
+        RightPaddleController.secondPlayer = true;
     }
 
     public void LoadPlayerVsComputer()
     {
         //Debug.Log("Computer");
         SceneManager.LoadScene("SampleScene");
-        PaddleController2.secondPlayer = false;
+        RightPaddleController.secondPlayer = false;
     }
 }
