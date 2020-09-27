@@ -38,5 +38,19 @@ public class RightPaddleController : MonoBehaviour
                 transform.Translate(paddlePos);
             }
         }
+        else // AI
+        {
+            if (transform.position.y < GameObject.Find("Ball").transform.position.y)
+            {
+                Vector3 paddlePos = new Vector3(0, paddleSpeed, 0);
+                transform.Translate(paddlePos);
+            }
+            if (transform.position.y > GameObject.Find("Ball").transform.position.y)
+            {
+                Vector3 paddlePos = new Vector3(0, -paddleSpeed, 0);
+                transform.Translate(paddlePos);
+            }
+        }
+
     }
 }
