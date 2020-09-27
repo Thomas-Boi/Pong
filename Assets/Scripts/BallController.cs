@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+
+    public int targetFrameRate = 60;
+
     // track the ball's speed
     float x_speed = 0.085f;
     float y_speed;
@@ -18,6 +21,12 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<Renderer>().material.color = Color.red;
+        // fps lock, because the ball moves at 10x speed at 600 fps
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = targetFrameRate;
+
+
         // generate random y_speed everytime
         randGen = new System.Random();
         float range_ = 0.079f;
@@ -65,6 +74,14 @@ public class BallController : MonoBehaviour
         String collidedName = collision.collider.name;
         if (collidedName == "LeftPaddle" || collidedName == "RightPaddle")
         {
+            if (x_speed > -0.3 && x_speed < 0.3)
+            {
+                x_speed = (x_speed > 0) ? x_speed + 0.01f : x_speed - 0.01f;
+            }
+            if (y_speed > -0.3 && y_speed < 0.3)
+            {
+                y_speed = (y_speed > 0) ? y_speed + 0.01f : y_speed - 0.01f;
+            }
             x_speed = -x_speed;
         }
         else if (collidedName == "Ground" || collidedName == "Ceiling")
